@@ -1,5 +1,6 @@
 // Import React
 import React from "react";
+import styled from "react-emotion";
 
 // Import Spectacle Core tags
 import {
@@ -26,9 +27,14 @@ import {
   imperative1,
   curry1,
   curry2,
-  compose
+  compose,
+  fpselect
 } from "./samples";
 
+const CustomSlide = styled(Slide)`
+  width: 1500px;
+  max-width: 1500px;
+`;
 const Math = props => (
   <strong
     style={Object.assign({ color: "black", paddingRight: "8px" }, props.style)}
@@ -228,6 +234,8 @@ export default class Presentation extends React.Component {
         </Slide>
         <Slide
           transition={["zoom", "slide"]}
+          maxWidth={1500}
+          width={1500}
           bgColor="tertiary"
           textColor="primary"
         >
@@ -245,17 +253,21 @@ export default class Presentation extends React.Component {
             compose and pipe as we saw earlier
           </Text>
           <Text textSize={20} textColor="primary" padding={20}>
-            So how does it help in programming? so if you notice its basically
-            passing the result of the first function to the second function
-            basically it's <Math>piping</Math> it through. So in essence you can
-            use it to create a <Math>pipeline</Math> of functions.
+            So lets see how we can use Ramda and things we learned just now to
+            make the initial example better.
           </Text>
-          <CodePane theme="dark" source={compose} lang="javascript" />
-          <Text textSize={16} textColor="primary" padding={20}>
-            PS : Compose goes right to left but its pretty easy to create
-            something similar which goes left to right its called{" "}
-            <Math>pipe</Math>
-          </Text>
+        </Slide>
+        <Slide
+          transition={["zoom", "slide"]}
+          maxWidth={1500}
+          width={1500}
+          bgColor="tertiary"
+          textColor="primary"
+        >
+          <Text padding={10} textColor="primary">Before:</Text>
+          <CodePane source={imperative1} fit lang="javascript" />
+          <Text padding={10} textColor="primary">After:</Text>
+          <CodePane source={fpselect} fit lang="javascript" />
         </Slide>
       </Deck>
     );

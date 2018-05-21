@@ -113,3 +113,8 @@ const multiplyAndAdd = compose(addCurry(10), multiplyCurried(4));
 
 console.log(multiplyAndAdd(4)); // 26
 `
+
+export const fpselect = `
+const getUsers = (userType = "verified", filterFn = R.always(Boolean(true))) =>
+  R.pipe(R.groupBy(R.prop("type")), R.prop(userType), R.filter(filterFn));
+`
