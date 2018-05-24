@@ -1,6 +1,9 @@
 // Import React
 import React from "react";
 import styled from "react-emotion";
+import functionalSetState from "./reactSetState.png";
+import Slide14 from "./slide14";
+import Slide15 from "./slide15";
 
 // Import Spectacle Core tags
 import {
@@ -15,7 +18,9 @@ import {
   Text,
   CodePane,
   Layout,
-  Fit
+  Image,
+  Fit,
+  Link
 } from "spectacle";
 
 // Import theme
@@ -28,7 +33,9 @@ import {
   curry1,
   curry2,
   compose,
-  fpselect
+  fpselect,
+  topActiveUsers,
+  stateMachine
 } from "./samples";
 
 const CustomSlide = styled(Slide)`
@@ -65,6 +72,7 @@ export default class Presentation extends React.Component {
       <Deck
         transition={["zoom", "slide"]}
         transitionDuration={500}
+        contentWidth={1500}
         theme={theme}
       >
         <Slide transition={["zoom"]} bgColor="primary">
@@ -94,11 +102,10 @@ export default class Presentation extends React.Component {
         >
           <Heading
             size={2}
-            fit
             caps
             lineHeight={1}
             textColor="primary"
-            style={{ paddingBottom: "20px" }}
+            style={{paddingBottom :"20px"}}
           >
             THE SELECTOR
           </Heading>
@@ -264,10 +271,79 @@ export default class Presentation extends React.Component {
           bgColor="tertiary"
           textColor="primary"
         >
-          <Text padding={10} textColor="primary">Before:</Text>
+          <Text padding={10} textColor="primary">
+            Before:
+          </Text>
           <CodePane source={imperative1} fit lang="javascript" />
-          <Text padding={10} textColor="primary">After:</Text>
+          <Text padding={10} textColor="primary">
+            After:
+          </Text>
           <CodePane source={fpselect} fit lang="javascript" />
+        </Slide>
+        <Slide
+          transition={["zoom", "slide"]}
+          bgColor="tertiary"
+          textColor="primary"
+        >
+          <Text padding={10} textColor="primary">
+            So if you want all "top" users who are active, you do this:{" "}
+          </Text>
+          <CodePane source={topActiveUsers} fit lang="javascript" />
+        </Slide>
+        <Slide
+          transition={["zoom", "slide"]}
+          bgColor="tertiary"
+          textColor="primary"
+        >
+          <Text padding={10} textColor="primary">
+            So for each case we can create a function and as a bonus we can
+            create a object for each possible state:
+          </Text>
+          <CodePane source={stateMachine} fit lang="javascript" />
+          <Text padding={10} textColor="primary">
+            This describes our entire state transitions!
+          </Text>
+        </Slide>
+        <Slide transition={["zoom", "slide"]} bgColor="tertiary">
+          <Heading size={6} textColor="primary" caps>
+            But where's React :-)
+          </Heading>
+          <Text padding={20} textSize={18}>
+            So far what ever we did were not really tied to React which I think
+            is good :) btw, but how can we make React more "functional"
+          </Text>
+          <Text padding={20} textSize={18}>
+            Did you know that setState accepts a function ( no not the callback
+            ), straight from the docs:
+          </Text>
+          <Image src={functionalSetState} />
+          <Text padding={20} textSize={18}>
+            For reference:
+          </Text>
+          <div>
+            <Link
+              href="https://reactjs.org/docs/react-component.html#setstate"
+              textSize={16}
+              fill
+            >
+              Docs{" "}
+            </Link>
+          </div>
+          <div>
+            <Link
+              href="https://medium.freecodecamp.org/functional-setstate-is-the-future-of-react-374f30401b6b"
+              textSize={16}
+              fill
+            >
+              Functional Set State
+            </Link>
+          </div>
+        </Slide>
+        <Slide bgColor="tertiary">
+          <Slide14 />
+        </Slide>
+        <Slide bgColor="tertiary">
+          <Slide15 />
         </Slide>
       </Deck>
     );

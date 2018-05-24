@@ -3,8 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "global": "^4.3.2",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
+    "serve": "^6.5.7",
     "spectacle-scripts": "2.0.0"
   },
   "scripts": {
