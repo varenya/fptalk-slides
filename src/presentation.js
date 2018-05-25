@@ -1,9 +1,11 @@
 // Import React
 import React from "react";
-import styled from "react-emotion";
+import styled, { css } from "react-emotion";
 import functionalSetState from "./reactSetState.png";
 import Slide14 from "./slide14";
 import Slide15 from "./slide15";
+import Slide16 from "./Slide16";
+import Slide17 from "./Slide17";
 
 // Import Spectacle Core tags
 import {
@@ -105,7 +107,7 @@ export default class Presentation extends React.Component {
             caps
             lineHeight={1}
             textColor="primary"
-            style={{paddingBottom :"20px"}}
+            style={{ paddingBottom: "20px" }}
           >
             THE SELECTOR
           </Heading>
@@ -181,14 +183,14 @@ export default class Presentation extends React.Component {
             Here you basically keep returning functions which wait for the next
             argument and when you pass all the arguments you see the final value
           </Text>
-          <Text padding={20} textSize={18}>
-            Lets look at a simple example:
-          </Text>
           <CodePane
             source={curry1}
-            style={{ paddingTop: "20px" }}
+            style={{ paddingTop: "20px", minWidth: "50%" }}
             lang="javascript"
           />
+          <Text padding={10} textSize={18}>
+            Example
+          </Text>
         </Slide>
         <Slide
           transition={["zoom", "slide"]}
@@ -217,7 +219,7 @@ export default class Presentation extends React.Component {
             size={6}
             textColor="primary"
             caps
-            style={{ paddingBottom: "80px" }}
+            style={{ paddingBottom: "20px" }}
           >
             Composing functions like music
           </Heading>
@@ -232,7 +234,12 @@ export default class Presentation extends React.Component {
             basically it's <Math>piping</Math> it through. So in essence you can
             use it to create a <Math>pipeline</Math> of functions.
           </Text>
-          <CodePane theme="dark" source={compose} lang="javascript" />
+          <CodePane
+            theme="dark"
+            source={compose}
+            lang="javascript"
+            style={{ minWidth: "50%" }}
+          />
           <Text textSize={16} textColor="primary" padding={20}>
             PS : Compose goes right to left but its pretty easy to create
             something similar which goes left to right its called{" "}
@@ -271,14 +278,22 @@ export default class Presentation extends React.Component {
           bgColor="tertiary"
           textColor="primary"
         >
-          <Text padding={10} textColor="primary">
-            Before:
-          </Text>
-          <CodePane source={imperative1} fit lang="javascript" />
-          <Text padding={10} textColor="primary">
-            After:
-          </Text>
-          <CodePane source={fpselect} fit lang="javascript" />
+          <div
+            className={css({ display: "flex", justifyContent: "space-around" })}
+          >
+            <div className={css({ flex: "0 0 45%" })}>
+              <Text padding={10} textColor="primary">
+                Before:
+              </Text>
+              <CodePane source={imperative1} fit lang="javascript" />
+            </div>
+            <div className={css({ flex: "0 0 50%" })}>
+              <Text padding={10} textColor="primary">
+                After:
+              </Text>
+              <CodePane source={fpselect} fit lang="javascript" />
+            </div>
+          </div>
         </Slide>
         <Slide
           transition={["zoom", "slide"]}
@@ -344,6 +359,12 @@ export default class Presentation extends React.Component {
         </Slide>
         <Slide bgColor="tertiary">
           <Slide15 />
+        </Slide>
+        <Slide bgColor="tertiary">
+          <Slide16 />
+        </Slide>
+        <Slide bgColor="tertiary">
+          <Slide17 />
         </Slide>
       </Deck>
     );
